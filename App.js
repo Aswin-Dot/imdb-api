@@ -8,7 +8,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
 import ActorScreen from "./src/Screens/ActorScreen";
-import TitleScreen from './src/Screens/TitleScreen';
+import MovieScreen from './src/Screens/MovieScreen';
 
 
 function TabNavigation() {
@@ -20,7 +20,7 @@ function TabNavigation() {
       barStyle={{ backgroundColor: "#694fad" }}
     >
       <Tab.Screen name="Actor" component={ActorScreen} />
-      <Tab.Screen name="Title" component={TitleScreen} />
+      <Tab.Screen name="Movie" component={MovieScreen} />
     </Tab.Navigator>
   );
 }
@@ -37,7 +37,7 @@ function DrawerNavigation() {
       }}
     >
       <Drawer.Screen name="Tab" component={TabNavigation} />
-      <Drawer.Screen name="Title" component={TitleScreen} />
+      <Drawer.Screen name="Movie" component={MovieScreen} />
     </Drawer.Navigator>
   );
 }

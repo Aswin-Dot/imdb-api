@@ -2,14 +2,14 @@ import React from "react";
 import { View, StyleSheet } from "react-native";
 import Page from "../Components/Page";
 
-const TitleScreen = () => {
+const MovieScreen = () => {
   return (
     <View>
-      <Page name="TitleScreen" />
+      <Page name="MovieScreen" />
     </View>
   );
 };
 
 const styles = StyleSheet.create({});
 
-export default TitleScreen;
+export default MovieScreen;
