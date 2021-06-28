@@ -1,64 +1,38 @@
 import * as React from "react";
-import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
-import {
-  createDrawerNavigator,
-} from "@react-navigation/drawer";
+import { StatusBar } from "react-native";
+
+import { createDrawerNavigator } from "@react-navigation/drawer";
 import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
-import ActorScreen from "./src/Screens/ActorScreen";
-import MovieScreen from './src/Screens/MovieScreen';
+import ExploreScreen from "./src/Screens/ExploreScreen";
+import LikedScreen from "./src/Screens/LikedScreen";
+import SettingsScreen from "./src/Screens/SettingsScreen";
+import SupportScreen from "./src/Screens/SupportScreen";
+import NavigationScreens from "./src/Navigation/NavigationScreens";
 
+import DrawerContent from "./src/Components/DrawerContent";
 
-function TabNavigation() {
-  const Tab = createMaterialBottomTabNavigator();
-  return (
-    <Tab.Navigator
-      activeColor="#f0edf6"
-      inactiveColor="#3e2465"
-      barStyle={{ backgroundColor: "#694fad" }}
-    >
-      <Tab.Screen name="Actor" component={ActorScreen} />
-      <Tab.Screen name="Movie" component={MovieScreen} />
-    </Tab.Navigator>
-  );
-}
-
-
-function DrawerNavigation() {
-  const Drawer = createDrawerNavigator();
-  return (
-    <Drawer.Navigator
-      initialRouteName="Tab"
-      drawerContentOptions={{
-        activeTintColor: "#3e2465",
-        // inactiveTintColor: "#694fad",
-      }}
-    >
-      <Drawer.Screen name="Tab" component={TabNavigation} />
-      <Drawer.Screen name="Movie" component={MovieScreen} />
-    </Drawer.Navigator>
-  );
-}
-
-function StackNavigation() {
-  const Stack  = createStackNavigator();
-  return (
-    <Stack.Navigator headerMode="none">
-      <Stack.Screen
-        name="IMDB"
-        component={DrawerNavigation}
-      />
-    </Stack.Navigator>
-  );
-}
+const Drawer = createDrawerNavigator();
 
 export default function App() {
   return (
     <SafeAreaProvider>
       <NavigationContainer>
-        <StackNavigation />
+        <StatusBar hidden />
+        <Drawer.Navigator
+          initialRouteName="Home"
+          drawerContentOptions={{
+            activeTintColor: "#3e2465",
+          }}
+          drawerContent={(props) => <DrawerContent {...props} />}
+        >
+          <Drawer.Screen name="Home" component={NavigationScreens} />
+          <Drawer.Screen name="Explore" component={ExploreScreen} />
+          <Drawer.Screen name="Liked" component={LikedScreen} />
+          <Drawer.Screen name="Settings" component={SettingsScreen} />
+          <Drawer.Screen name="Support" component={SupportScreen} />
+        </Drawer.Navigator>
       </NavigationContainer>
     </SafeAreaProvider>
   );
