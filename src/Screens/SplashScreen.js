@@ -1,15 +1,11 @@
 import React from "react";
 import { View, Text, Button, StyleSheet } from "react-native";
 
-const SettingsScreen = ({navigation}) => {
-
+const SplashScreen = () => {
   return (
     <View style={styles.container}>
-      <Text>Settings Screen</Text>
-      <Button
-        title="Go to Support"
-        onPress={() => navigation.navigate("Support")}
-      />
+      <Text>Splash Screen</Text>
+      <Button title="Click Here" onPress={() => alert("Button Clicked!")} />
     </View>
   );
 };
@@ -22,4 +18,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SettingsScreen;
+export default SplashScreen;

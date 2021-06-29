@@ -5,13 +5,15 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import { NavigationContainer } from "@react-navigation/native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
-import ExploreScreen from "./src/Screens/ExploreScreen";
-import LikedScreen from "./src/Screens/LikedScreen";
-import SettingsScreen from "./src/Screens/SettingsScreen";
-import SupportScreen from "./src/Screens/SupportScreen";
-import NavigationScreens from "./src/Navigation/NavigationScreens";
-
+import {
+  ExploreStackScreen,
+  SettingsStackScreen,
+  SupportStackScreen,
+  LikedStackScreen,
+} from "./src/Navigation/Stack/StackNavigation";
 import DrawerContent from "./src/Components/DrawerContent";
+import NavigationScreens from "./src/Navigation/NavigationScreens";
+import RootNavigation from "./src/Navigation/RootNavigation";
 
 const Drawer = createDrawerNavigator();
 
@@ -20,29 +22,15 @@ export default function App() {
     <SafeAreaProvider>
       <NavigationContainer>
         <StatusBar hidden />
-        <Drawer.Navigator
-          initialRouteName="Home"
-          drawerContentOptions={{
-            activeTintColor: "#3e2465",
-          }}
-          drawerContent={(props) => <DrawerContent {...props} />}
-        >
+        <RootNavigation/>
+        {/* <Drawer.Navigator initialRouteName="Home" drawerContent={(props) => <DrawerContent {...props}/>} >
           <Drawer.Screen name="Home" component={NavigationScreens} />
-          <Drawer.Screen name="Explore" component={ExploreScreen} />
-          <Drawer.Screen name="Liked" component={LikedScreen} />
-          <Drawer.Screen name="Settings" component={SettingsScreen} />
-          <Drawer.Screen name="Support" component={SupportScreen} />
-        </Drawer.Navigator>
+          <Drawer.Screen name="Explore" component={ExploreStackScreen} />
+          <Drawer.Screen name="Liked" component={LikedStackScreen} />
+          <Drawer.Screen name="Settings" component={SettingsStackScreen} />
+          <Drawer.Screen name="Support" component={SupportStackScreen} />
+        </Drawer.Navigator> */}
       </NavigationContainer>
     </SafeAreaProvider>
   );
 }
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: '#fff',
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//   },
-// });
