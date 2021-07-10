@@ -12,6 +12,7 @@ import { Text,
 } from "react-native-paper";
 import { FontAwesome } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
+import { auth } from "../Firebase/firebase.utils"
 
 const DrawerContent = (props) => {
 
@@ -26,7 +27,11 @@ const DrawerContent = (props) => {
         <DrawerContentScrollView {...props}>
           <View style={styles.drawerContent}>
             <View style={styles.userInfoSection}>
-              <TouchableOpacity onPress={() => {props.navigation.navigate("Home")}}>
+              <TouchableOpacity
+                onPress={() => {
+                  props.navigation.navigate("Home");
+                }}
+              >
                 <View style={{ flexDirection: "row", marginTop: 15 }}>
                   <Avatar.Image
                     source={{
@@ -119,14 +124,13 @@ const DrawerContent = (props) => {
         </DrawerContentScrollView>
 
         <Drawer.Section style={styles.bottomDrawerSection}>
-          <TouchableOpacity onPress={() => {}}>
             <DrawerItem
               label="Sign Out"
               icon={({ color, size }) => (
                 <FontAwesome name="sign-out" size={size} color={color} />
               )}
+              onPress={() => auth.signOut()}
             />
-          </TouchableOpacity>
         </Drawer.Section>
       </View>
     );
